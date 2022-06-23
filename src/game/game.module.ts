@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GameController } from './game.controller';
-import { GameService } from './table.service';
+import { GameService } from './game.service';
 
 @Module({
   controllers: [GameController],
