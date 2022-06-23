@@ -4,4 +4,5 @@ export class CreateGameDto{
   @IsNumber()
   @IsPositive()
   number: number;
+  name:string;
 };
