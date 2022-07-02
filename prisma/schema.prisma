@@ -12,13 +12,13 @@ datasource db {
 
 model Game {
   id          String @id @default(uuid())
-  titile      String @unique
+  title      String @unique
   description String
   year        Int
   image       String
-  ImdbScore   Int
-  TrailerYouTubeUrl String
-  GamePlayYouTubeUrl String
+  imdbScore   Int
+  trailerYouTubeUrl String
+  gamePlayYouTubeUrl String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   @@map("game")

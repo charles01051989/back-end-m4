@@ -12,7 +12,7 @@ export class GameController {
     return this.gameService.findAll();
   }
   @Post()
-  create(@Body() createGameDto: CreateGameDto) {
-    return this.gameService.create(createGameDto);
+  create(@Body() dto: CreateGameDto) {
+    return this.gameService.create(dto);
   }
 };
