@@ -25,4 +25,7 @@ export class GameService {
     const data: Partial<Game> = {...dto}
     return this.prisma.game.update({ where: {id}, data })
   }
+  async delete(id: string){
+    await this.prisma.game.delete({ where: { id } });
+  }
 }
