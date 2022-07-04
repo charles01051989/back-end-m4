@@ -31,16 +31,16 @@ export class GameService {
     return this.prisma.game.create({ data }).catch(this.handleError);
   }
 
-  handleError(error: Error) {
-    console.log(error.message);
-    throw new UnprocessableEntityException(error.message);
-    return undefined
+  handleError(error: Error): undefined {
+    const errorLines = error.message?.split('\n');
+    const lastErrorLine = errorLines[errorLines.length - 1]?.trim();
+    throw new UnprocessableEntityException(lastErrorLine || "Ops algum erro ocorreu!");
 ;  }
 
   async update(id: string, dto: any): Promise<Game> {
     await this.findById(id);
     const data: Partial<Game> = {...dto}
-    return this.prisma.game.update({ where: {id}, data })
+    return this.prisma.game.update({ where: {id}, data }).catch(this.handleError);
   }
 
   async delete(id: string){
