@@ -8,7 +8,7 @@ export class GameService {
 
   constructor(private readonly prisma: PrismaService){}
 
-  findAll(): Promise<Game[]>  {
+  findAll(): Promise<Game[]> {
     return this.prisma.game.findMany({
       orderBy: {
         genre: 'asc'
