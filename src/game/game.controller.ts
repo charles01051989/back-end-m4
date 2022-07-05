@@ -13,7 +13,7 @@ export class GameController {
 
   @Get()
   @ApiOperation({
-    summary: 'Listar todos os games por gênero!'
+    summary: 'HOMEPAGE (Lista todos os games por gênero)'
   })
   findAll(): Promise<Game[]> {
     return this.gameService.findAll();
