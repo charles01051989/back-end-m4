@@ -13,6 +13,7 @@ datasource db {
 model Game {
   id          String @id @default(uuid())
   title      String @unique
+  genre      String
   description String
   year        Int
   image       String

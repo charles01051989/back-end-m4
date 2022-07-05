@@ -13,7 +13,7 @@ export class GameController {
 
   @Get()
   @ApiOperation({
-    summary: 'Listar todos os games!'
+    summary: 'Listar todos os games por gênero!'
   })
   findAll(): Promise<Game[]> {
     return this.gameService.findAll();
@@ -50,5 +50,13 @@ export class GameController {
   delete(@Param('id') id: string) {
     this.gameService.delete(id);
   }
+
+  // @Get()
+  // @ApiOperation({
+  //   summary: 'Lista ordenada'
+  // })
+  // groupGames(){
+  //   this.gameService.groupGames()
+  // }
 
 };
