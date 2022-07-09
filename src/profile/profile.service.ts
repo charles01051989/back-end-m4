@@ -48,7 +48,5 @@ export class ProfileService {
     await this.prisma.profile.delete({ where: { id } });
   }
 
-  // async groupProfiles() {
-
-  // }
+  
 }
