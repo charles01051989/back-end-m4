@@ -1,19 +1,31 @@
 import { Injectable, NotFoundException, UnprocessableEntityException } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
 import { User } from "./entities/user.entity";
 
 @Injectable()
 export class UsersService {
+  private userSelect = {
+    id: true,
+    name: true,
+    password: false,
+    image: true,
+    isAdmin: true,
+    createdAt: true,
+    updatedAt: true,
+  }
 
   constructor(private readonly prisma: PrismaService){}
 
   findAll(): Promise<User[]>  {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      select: this.userSelect,
+    });
   }
 
   async findById(id: string): Promise<User>{
-    const record = await this.prisma.user.findUnique({ where: { id } });
+    const record = await this.prisma.user.findUnique({ where: { id }, select: this.userSelect });
 
     if (!record) {
       throw new NotFoundException(`Registro com o '${id}' não encontrado.`)
@@ -28,7 +40,11 @@ export class UsersService {
   create(dto: CreateUserDto): Promise<User> {
     const data: User = {...dto}
 
-    return this.prisma.user.create({ data }).catch(this.handleError);
+    return this.prisma.user.create({
+      data,
+      select: this.userSelect,
+
+    }).catch(this.handleError);
   }
 
   handleError(error: Error): undefined {
@@ -37,10 +53,15 @@ export class UsersService {
     throw new UnprocessableEntityException(lastErrorLine || "Ops algum erro ocorreu!");
 ;  }
 
-  async update(id: string, dto: any): Promise<User> {
+  async update(id: string, dto: UpdateUserDto): Promise<User> {
     await this.findById(id);
     const data: Partial<User> = {...dto}
-    return this.prisma.user.update({ where: {id}, data }).catch(this.handleError);
+
+    return this.prisma.user.update({ where: {id},
+      data,
+      select: this.userSelect,
+    })
+      .catch(this.handleError);
   }
 
   async delete(id: string){
