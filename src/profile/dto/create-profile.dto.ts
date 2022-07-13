@@ -1,13 +1,19 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsString, IsUrl } from "class-validator"
+import { IsString, IsUrl, IsUUID } from "class-validator"
 
 export class CreateProfileDto {
   @IsString()
   @ApiProperty({
-    description: 'Perfil de administrador ou usuário',
-    example: 'Administrador'
+    description: 'Nome do perfil do usuário',
+    example: 'alaricodasneves'
   })
   title: string
+  @IsUUID()
+  @ApiProperty({
+    description: 'ID do usuário do perfil',
+    example: 'b7178ccc-a3b6-42d3-9daa-a695ff43f56b',
+  })
+  userId: string;
   @IsUrl()
   @ApiProperty({
     description: 'Imagem de perfil',

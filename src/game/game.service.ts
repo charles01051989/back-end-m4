@@ -9,11 +9,7 @@ export class GameService {
   constructor(private readonly prisma: PrismaService){}
 
   findAll(): Promise<Game[]> {
-    return this.prisma.game.findMany({
-      orderBy: {
-        genre: 'asc'
-      }
-    });
+    return this.prisma.game.findMany();
   }
 
   async findById(id: string): Promise<Game>{

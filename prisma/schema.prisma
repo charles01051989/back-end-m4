@@ -13,7 +13,6 @@ datasource db {
 model Game {
   id          String @id @default(uuid())
   title      String @unique
-  genre      String
   description String
   year        Int
   image       String
@@ -22,6 +21,10 @@ model Game {
   gamePlayYouTubeUrl String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  genres Genre[]
+  favorites Favorite[]
+
   @@map("game")
 }
 
@@ -33,15 +36,26 @@ model User {
   isAdmin  Boolean
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  profiles Profile[]
+
+
   @@map("user")
 }
 
 model Profile {
   id String @id @default(uuid())
+
+  user User @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
   title String @unique
   image String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  favorites Favorite[]
+
   @@map("profile")
 }
 
@@ -50,5 +64,22 @@ model Genre{
   name String @unique
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  games Game[]
+
   @@map("genre")
+}
+
+model Favorite{
+  id String @id @default(uuid())
+
+  profile Profile @relation(fields: [profileId], references: [id])
+  profileId String @map("profile_Id")
+
+
+  games Game[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("favorite")
 }
