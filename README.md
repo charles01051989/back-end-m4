@@ -58,6 +58,56 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+Guidelines for running the project.
+
+Cloning the repository.
+ 
+1- Click on the repository link.
+
+2- Above the list of files, click option Code.
+
+3- To clone the repository using HTTPS, 
+
+4- Open the terminal.
+
+5- Change the current working directory to the location where you want to have the directory cloned.
+
+6- Type git clone (clone git) and paste the URL you copied earlier.
+
+7-Press Enter to create your local clone.
+
+
+Installing the dependencies.
+
+
+1- Open the terminal and run the command:
+
+npm i -g @nestjs/cli
+ 
+2- Installing Class Validator:
+
+npm i class-validator class-transformer
+
+3- Installing Swagger:
+
+npm i @nestjs/swagger swagger-ui-express
+
+ 
+Running the project.
+
+1- Open the terminal and run:
+
+Running project
+
+1 npm run start:dev
+
+2 npx prisma studio
+
+3 Access swagger with browser
+
+http://localhost:3333/api
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
