@@ -26,37 +26,54 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+Guidelines for running the project.
 
-```bash
-$ npm install
-```
+Cloning the repository.
+ 
+1- Click on the repository link.
 
-## Running the app
+2- Above the list of files, click option Code.
 
-```bash
-# development
-$ npm run start
+3- To clone the repository using HTTPS, 
 
-# watch mode
-$ npm run start:dev
+4- Open the terminal.
 
-# production mode
-$ npm run start:prod
-```
+5- Change the current working directory to the location where you want to have the directory cloned.
 
-## Test
+6- Type git clone (clone git) and paste the URL you copied earlier.
 
-```bash
-# unit tests
-$ npm run test
+7-Press Enter to create your local clone.
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+Installing the dependencies.
+
+
+1- Open the terminal and run the command:
+
+npm i -g @nestjs/cli
+ 
+2- Installing Class Validator:
+
+npm i class-validator class-transformer
+
+3- Installing Swagger:
+
+npm i @nestjs/swagger swagger-ui-express
+
+ 
+Running the project.
+
+1- Open the terminal and run:
+
+Running project
+
+1 npm run start:dev
+
+2 npx prisma studio
+
+3 Access swagger with browser
+
+http://localhost:3333/api
 
 ## Support
 
