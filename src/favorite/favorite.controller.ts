@@ -1,8 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { FavoriteService } from './favorite.service';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
-import { UpdateFavoriteDto } from './dto/update-favorite.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('favorite')
 @Controller('favorite')
@@ -10,27 +9,19 @@ export class FavoriteController {
   constructor(private readonly favoriteService: FavoriteService) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Criar lista de favoritos'
+  })
   create(@Body() createFavoriteDto: CreateFavoriteDto) {
     return this.favoriteService.create(createFavoriteDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.favoriteService.findAll();
-  // }
-
   @Get(':id')
+  @ApiOperation({
+    summary: 'Listar jogos favoritos pelo ID'
+  })
   findOne(@Param('id') id: string) {
     return this.favoriteService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFavoriteDto: UpdateFavoriteDto) {
-    return this.favoriteService.update(id, updateFavoriteDto);
-  }
-
-  @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.favoriteService.delete(id);
-  }
 }

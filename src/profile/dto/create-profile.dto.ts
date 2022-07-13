@@ -11,7 +11,7 @@ export class CreateProfileDto {
   @IsUUID()
   @ApiProperty({
     description: 'ID do usuário do perfil',
-    example: 'b7178ccc-a3b6-42d3-9daa-a695ff43f56b',
+    example: '327d06c5-ea6c-4482-940b-6922bdbd5f0c',
   })
   userId: string;
   @IsUrl()
