@@ -9,6 +9,7 @@ export class LoginDto {
     example: 'kingximbinha',
   })
   name: string;
+  
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
