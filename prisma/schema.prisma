@@ -46,7 +46,7 @@ model User {
 model Profile {
   id String @id @default(uuid())
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String @map("user_id")
 
   title String @unique
