@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException, UnprocessableEntityException } from "@nestjs/common";
+import { Genre, Prisma } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateGameDto } from "./dto/create-game-dto";
 import { Game } from "./entities/game.entity";
@@ -8,8 +9,9 @@ export class GameService {
 
   constructor(private readonly prisma: PrismaService){}
 
-  findAll(): Promise<Game[]> {
-    return this.prisma.game.findMany();
+   findAll(): Promise<Genre[]>{
+    // return this.prisma.game.findMany({include:{genres:{orderBy:{name:'asc'}}}})
+    return this.prisma.genre.findMany({include:{games:true},orderBy:{name:'asc'}})
   }
 
   async findById(id: string): Promise<Game>{
@@ -25,8 +27,19 @@ export class GameService {
     return this.findById(id);
   }
 
-  create(dto: CreateGameDto): Promise<Game> {
-    const data: Game = {...dto}
+  create(dto: CreateGameDto){
+    const data: Prisma.GameCreateInput = {
+      title: dto.title,
+      image: dto.image,
+      description: dto.description,
+      year: dto.year,
+      imdbScore: dto.imdbScore,
+      trailerYouTubeUrl: dto.trailerYouTubeUrl,
+      gamePlayYouTubeUrl: dto.gamePlayYouTubeUrl,
+      genres: {
+        connect: dto.genres.map((genresId) =>({ id: genresId,}))
+      }
+    }
 
     return this.prisma.game.create({ data }).catch(this.handleError);
   }
@@ -48,7 +61,4 @@ export class GameService {
     await this.prisma.game.delete({ where: { id } });
   }
 
-  // async groupGames() {
-
-  // }
 }

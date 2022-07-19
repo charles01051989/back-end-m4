@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { FavoriteService } from './favorite.service';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Favorite } from './entities/favorite.entity';
 
 @ApiTags('favorite')
 @Controller('favorite')

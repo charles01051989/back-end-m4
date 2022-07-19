@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsString, IsUrl } from "class-validator";
+import { IsNumber, IsString, IsUrl, IsUUID } from "class-validator";
 
 export class CreateGameDto{
   @IsString()
@@ -46,4 +46,10 @@ export class CreateGameDto{
     example: 'https://youtu.be/mDYqT0_9VR4'
   })
   trailerYouTubeUrl: string;
+  @IsUUID(undefined, {each : true})
+  @ApiProperty({
+    description: 'Generos',
+    example: '["29caef02-2d16-490b-871a-b0d0acdc9722"]',
+  })
+  genres: string[]
 };
