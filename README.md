@@ -57,6 +57,15 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+No swagger: 1 -  Clicar na opção realizar login, recebendo o token. 
+
+            2 - Clicar em Try it out.
+
+            3 - Clicar em execute.
+
+            4 - Copiar o token gerado que aparece na primeira posição do JSON.
+
+            5 - Clicar na opção authorize(parte superior da página) e colar o token.
 
 Guidelines for running the project.
 
