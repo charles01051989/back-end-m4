@@ -33,12 +33,12 @@ export class GameService {
       image: dto.image,
       description: dto.description,
       year: dto.year,
-      // imdbScore: dto.imdbScore,
-      // trailerYouTubeUrl: dto.trailerYouTubeUrl,
-      // gamePlayYouTubeUrl: dto.gamePlayYouTubeUrl,
-      // genres: {
-      //   connect: dto.genres.map((genresId) =>({ id: genresId,}))
-      // }
+      imdbScore: dto.imdbScore,
+      trailerYouTubeUrl: dto.trailerYouTubeUrl,
+      gamePlayYouTubeUrl: dto.gamePlayYouTubeUrl,
+      genres: {
+        connect: dto.genres.map((genresId) =>({ id: genresId,}))
+      }
     }
 
     return this.prisma.game.create({ data }).catch(this.handleError);

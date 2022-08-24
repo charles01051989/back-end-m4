@@ -26,30 +26,30 @@ export class CreateGameDto{
     example: 'https://cloudfront-us-east-1.images.arcpublishing.com/infobae/K3BXUZZJ65CXRHTUVVUXDG7AFE.jpg'
   })
   image: string;
-  // @IsNumber()
-  // @ApiProperty({
-  //   description: 'Avaliação do game de 0 a 5',
-  //   example: 5
-  // })
-  // imdbScore: number;
-  // @IsString()
-  // @IsUrl()
-  // @ApiProperty({
-  //   description: 'Url yotube gameplay',
-  //   example: 'https://youtu.be/p4QG59y6FGE'
-  // })
-  // gamePlayYouTubeUrl: string;
-  // @IsString()
-  // @IsUrl()
-  // @ApiProperty({
-  //   description: 'Trailer do game',
-  //   example: 'https://youtu.be/mDYqT0_9VR4'
-  // })
-  // trailerYouTubeUrl: string;
-  // @IsUUID(undefined, {each : true})
-  // @ApiProperty({
-  //   description: 'Generos',
-  //   example: '["29caef02-2d16-490b-871a-b0d0acdc9722"]',
-  // })
-  // genres: string[]
+  @IsNumber()
+  @ApiProperty({
+    description: 'Avaliação do game de 0 a 5',
+    example: 5
+  })
+  imdbScore: number;
+  @IsString()
+  @IsUrl()
+  @ApiProperty({
+    description: 'Url yotube gameplay',
+    example: 'https://youtu.be/p4QG59y6FGE'
+  })
+  gamePlayYouTubeUrl: string;
+  @IsString()
+  @IsUrl()
+  @ApiProperty({
+    description: 'Trailer do game',
+    example: 'https://youtu.be/mDYqT0_9VR4'
+  })
+  trailerYouTubeUrl: string;
+  @IsUUID(undefined, {each : true})
+  @ApiProperty({
+    description: 'Generos',
+    example: '["29caef02-2d16-490b-871a-b0d0acdc9722"]',
+  })
+  genres: string[]
 };
