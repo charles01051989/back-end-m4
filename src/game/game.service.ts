@@ -11,7 +11,7 @@ export class GameService {
 
    findAll(): Promise<Game[]>{
     // return this.prisma.game.findMany({include:{genres:{orderBy:{name:'asc'}}}})
-    return this.prisma.genre.findMany({include:{games:true},orderBy:{name:'asc'}})
+    return this.prisma.game.findMany()
   }
 
   async findById(id: string): Promise<Game>{
