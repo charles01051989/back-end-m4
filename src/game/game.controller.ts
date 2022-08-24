@@ -7,8 +7,8 @@ import { UpdateGameDto } from "./dto/update-game-dto";
 import { AuthGuard } from "@nestjs/passport";
 
 @ApiTags('game')
-@UseGuards(AuthGuard())
-@ApiBearerAuth()
+// @UseGuards(AuthGuard())
+// @ApiBearerAuth()
 @Controller('game')
 export class GameController {
   tableService: any;
